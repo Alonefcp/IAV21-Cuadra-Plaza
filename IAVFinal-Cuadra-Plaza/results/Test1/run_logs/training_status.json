@@ -1,0 +1,24 @@
+{
+    "MoverHaciaObjetivo": {
+        "checkpoints": [
+            {
+                "steps": 100603,
+                "file_path": "results\\Test1\\MoverHaciaObjetivo\\MoverHaciaObjetivo-100603.onnx",
+                "reward": null,
+                "creation_time": 1622500607.011159
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 100603,
+            "file_path": "results\\Test1\\MoverHaciaObjetivo.onnx",
+            "reward": null,
+            "creation_time": 1622500607.011159
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.2.0",
+        "mlagents_version": "0.22.0",
+        "torch_version": "1.7.0+cu110",
+        "tensorflow_version": -1
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1622503263",
+        "python_version": "3.7.9 (tags/v3.7.9:13c94747c7, Aug 17 2020, 16:30:00) [MSC v.1900 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\felip\\OneDrive\\Desktop\\IAVFinal-Cuadra-Plaza\\venv\\Scripts\\mlagents-learn --run-id=Test3",
+        "mlagents_version": "0.22.0",
+        "mlagents_envs_version": "0.22.0",
+        "communication_protocol_version": "1.2.0",
+        "pytorch_version": "1.7.0+cu110",
+        "numpy_version": "1.18.5",
+        "end_time_seconds": "1622503277"
+    },
+    "total": 14.1308547,
+    "count": 1,
+    "self": 0.10491039999999963,
+    "children": {
+        "run_training.setup": {
+            "total": 0.03740940000000004,
+            "count": 1,
+            "self": 0.03740940000000004
+        },
+        "TrainerController.start_learning": {
+            "total": 13.988534900000001,
+            "count": 1,
+            "self": 0.000892400000003235,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 13.987338,
+                    "count": 1,
+                    "self": 13.987338
+                },
+                "trainer_threads": {
+                    "total": 2.600000000185787e-06,
+                    "count": 1,
+                    "self": 2.600000000185787e-06
+                },
+                "TrainerController._save_models": {
+                    "total": 0.00030189999999841177,
+                    "count": 1,
+                    "self": 0.00030189999999841177
+                }
+            }
+        }
+    }
+}

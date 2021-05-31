@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1622499574",
+        "python_version": "3.7.9 (tags/v3.7.9:13c94747c7, Aug 17 2020, 16:30:00) [MSC v.1900 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\felip\\OneDrive\\Desktop\\IAVFinal-Cuadra-Plaza\\venv\\Scripts\\mlagents-learn config/MoverHaciaObjetivo.yaml --run-id=Test2 --force",
+        "mlagents_version": "0.22.0",
+        "mlagents_envs_version": "0.22.0",
+        "communication_protocol_version": "1.2.0",
+        "pytorch_version": "1.7.0+cu110",
+        "numpy_version": "1.18.5",
+        "end_time_seconds": "1622499588"
+    },
+    "total": 14.6646592,
+    "count": 1,
+    "self": 0.1231813000000006,
+    "children": {
+        "run_training.setup": {
+            "total": 0.01489370000000001,
+            "count": 1,
+            "self": 0.01489370000000001
+        },
+        "TrainerController.start_learning": {
+            "total": 14.526584199999999,
+            "count": 1,
+            "self": 0.0007538999999994189,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 14.5241051,
+                    "count": 1,
+                    "self": 14.5241051
+                },
+                "trainer_threads": {
+                    "total": 1.7000000003264404e-06,
+                    "count": 1,
+                    "self": 1.7000000003264404e-06
+                },
+                "TrainerController._save_models": {
+                    "total": 0.0017234999999988787,
+                    "count": 1,
+                    "self": 0.0017234999999988787
+                }
+            }
+        }
+    }
+}
