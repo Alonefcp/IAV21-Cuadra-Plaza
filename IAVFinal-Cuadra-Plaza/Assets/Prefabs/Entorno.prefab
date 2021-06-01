@@ -638,7 +638,7 @@ MonoBehaviour:
     VectorActionSpaceType: 1
   m_Model: {fileID: 5022602860645237092, guid: 4e23b4f18a61a654193fba29ea0152f2, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: MoverHaciaObjetivo
   TeamId: 0
   m_UseChildSensors: 1

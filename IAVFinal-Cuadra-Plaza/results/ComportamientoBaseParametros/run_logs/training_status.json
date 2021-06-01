@@ -1,0 +1,24 @@
+{
+    "MoverHaciaObjetivo": {
+        "checkpoints": [
+            {
+                "steps": 7778,
+                "file_path": "results\\ComportamientoBaseParametros\\MoverHaciaObjetivo\\MoverHaciaObjetivo-7778.onnx",
+                "reward": null,
+                "creation_time": 1622558769.320801
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 7778,
+            "file_path": "results\\ComportamientoBaseParametros\\MoverHaciaObjetivo.onnx",
+            "reward": null,
+            "creation_time": 1622558769.320801
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.2.0",
+        "mlagents_version": "0.22.0",
+        "torch_version": "1.7.0+cu110",
+        "tensorflow_version": -1
+    }
+}
