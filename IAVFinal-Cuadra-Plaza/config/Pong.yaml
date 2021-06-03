@@ -1,0 +1,32 @@
+behaviors:
+  PongML:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 64 #32
+      buffer_size: 512 #256000 #256
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.90 #0.80 #0.95
+      num_epoch: 3 #3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: true #false 
+      hidden_units: 256
+      num_layers: 2
+      vis_encode_type: simple
+    reward_signals:
+      extrinsic:
+        gamma: 0.9
+        strength: 1.0
+      gail:
+        strength: 0.05
+        gamma: 0.90
+        encoding_size: 64
+        use_actions: false
+        demo_path: Demos/PongDemo.demo
+    keep_checkpoints: 5
+    max_steps: 1000000
+    time_horizon: 1000
+    summary_freq: 5000
+    threaded: true
