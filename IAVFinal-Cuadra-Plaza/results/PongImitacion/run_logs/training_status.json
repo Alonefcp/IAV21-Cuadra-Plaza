@@ -2,17 +2,23 @@
     "PongML": {
         "checkpoints": [
             {
-                "steps": 297600,
-                "file_path": "results\\PongImitacion\\PongML\\PongML-297600.onnx",
+                "steps": 499200,
+                "file_path": "results\\PongImitacion\\PongML\\PongML-499200.onnx",
+                "reward": 24.640625,
+                "creation_time": 1622740546.0305457
+            },
+            {
+                "steps": 784000,
+                "file_path": "results\\PongImitacion\\PongML\\PongML-784000.onnx",
                 "reward": null,
-                "creation_time": 1622678125.0771482
+                "creation_time": 1622741503.9244945
             }
         ],
         "final_checkpoint": {
-            "steps": 297600,
+            "steps": 784000,
             "file_path": "results\\PongImitacion\\PongML.onnx",
             "reward": null,
-            "creation_time": 1622678125.0771482
+            "creation_time": 1622741503.9244945
         }
     },
     "metadata": {

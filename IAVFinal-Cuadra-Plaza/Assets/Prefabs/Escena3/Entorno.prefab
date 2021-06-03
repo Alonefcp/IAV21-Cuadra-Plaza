@@ -182,11 +182,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3827090479027007670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.6, y: -3.074, z: 0}
+  m_LocalPosition: {x: -28.3, y: -3.074, z: 0}
   m_LocalScale: {x: 1, y: 30.30445, z: 1}
   m_Children: []
   m_Father: {fileID: 3827090479899245569}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3827090479027007668
 SpriteRenderer:
@@ -305,11 +305,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3827090479647416768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.198, y: 11.6, z: 0}
-  m_LocalScale: {x: 75.788506, y: 1, z: 1}
+  m_LocalPosition: {x: 4.616, y: 11.6, z: 0}
+  m_LocalScale: {x: 66.16043, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3827090479899245569}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3827090479647416774
 SpriteRenderer:
@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 3827090479678030177}
   - component: {fileID: 3827090479678030176}
   m_Layer: 0
-  m_Name: Pala
+  m_Name: PalaIA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -432,13 +432,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3827090479678029980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.9, y: -3, z: 0}
-  m_LocalScale: {x: 1, y: 5, z: 1}
+  m_LocalPosition: {x: 34.9, y: -2.4, z: 0}
+  m_LocalScale: {x: 1, y: 6, z: 1}
   m_Children:
   - {fileID: 90643206}
   - {fileID: 855076928}
   m_Father: {fileID: 3827090479899245569}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3827090479678030179
 SpriteRenderer:
@@ -480,7 +480,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c4ca29885e5da5c4b81dec14cce6d841, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9716981, g: 0.3254272, b: 0.3254272, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -579,7 +579,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 4000
-  velocidad: 40
+  velocidad: 45
   pelota: {fileID: 3827090480248781173}
   muroArriba: {fileID: 3827090479647416768}
   muroAbajo: {fileID: 3827090480064845920}
@@ -639,7 +639,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3827090479874547234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.3, y: 0, z: 0}
+  m_LocalPosition: {x: 40.7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3827090479899245569}
@@ -683,6 +683,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b42cab3fb035ab2438ff1a696951a1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mlPala: {fileID: 3827090479678030182}
+  penaliza: 1
 --- !u!1 &3827090479899245568
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,11 +712,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 3827090479678029981}
   - {fileID: 3827090480248781178}
   - {fileID: 3827090479647416769}
   - {fileID: 3827090479027007671}
   - {fileID: 3827090480064845921}
-  - {fileID: 3827090479678029981}
   - {fileID: 3827090479874547235}
   - {fileID: 1098891992}
   m_Father: {fileID: 0}
@@ -747,11 +749,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3827090480064845920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.024, y: -17.7, z: 0}
-  m_LocalScale: {x: 75.68045, y: 1, z: 1}
+  m_LocalPosition: {x: 4.556, y: -17.7, z: 0}
+  m_LocalScale: {x: 66.52142, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3827090479899245569}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3827090480064845926
 SpriteRenderer:
@@ -857,10 +859,6 @@ GameObject:
   - component: {fileID: 3827090480248781176}
   - component: {fileID: 3827090480248781177}
   - component: {fileID: 3827090480248781182}
-  - component: {fileID: 8024667270605968105}
-  - component: {fileID: 7748134793022469853}
-  - component: {fileID: 5584263615995150986}
-  - component: {fileID: 4891287926818814768}
   m_Layer: 0
   m_Name: Pelota
   m_TagString: Pelota
@@ -876,11 +874,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3827090480248781173}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.1, z: 0}
+  m_LocalPosition: {x: 4.6, y: -3.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3827090479899245569}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3827090480248781179
 SpriteRenderer:
@@ -991,8 +989,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19bd9600f94a084598f28eb10f754c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 15
-  maxVelocidad: 30
+  velocidad: 25
+  maxVelocidad: 40
 --- !u!114 &3827090480248781182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1005,79 +1003,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b35dd8670fbef4d9344be8c9c063ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8024667270605968105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3827090480248781173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BrainParameters:
-    VectorObservationSize: 5
-    NumStackedVectorObservations: 1
-    VectorActionSize: 03000000
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: My Behavior
-  TeamId: 0
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_ObservableAttributeHandling: 0
---- !u!114 &7748134793022469853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3827090480248781173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08a2cdee4eb4a184da24bd9c2538fccc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  velocidad: 30
-  pelota: {fileID: 3827090480248781173}
-  muroArriba: {fileID: 3827090479647416768}
-  muroAbajo: {fileID: 3827090480064845920}
---- !u!114 &5584263615995150986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3827090480248781173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DecisionPeriod: 5
-  TakeActionsBetweenDecisions: 1
---- !u!114 &4891287926818814768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3827090480248781173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2902496c0120472b90269f94a0aec7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Record: 0
-  NumStepsToRecord: 0
-  DemonstrationName: PongDemo
-  DemonstrationDirectory: Demos

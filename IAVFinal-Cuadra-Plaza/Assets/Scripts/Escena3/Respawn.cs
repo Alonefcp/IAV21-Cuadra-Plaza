@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private float random = 2; 
-    private Vector3 posicion; 
+    
+    private float random = 2; //Rango para el generar numeros aleatorios
+    private Vector3 posicion; //posicion inicial de la pelota
+    
     void Start()
     {
+        //Guardo la posicion inicial de la pelota
         posicion = transform.position; 
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Hace aparecer la pelota en el centro del escenario
+    /// </summary>
     public void Respaw()
     {
         Vector3 auxPosicion = posicion; 

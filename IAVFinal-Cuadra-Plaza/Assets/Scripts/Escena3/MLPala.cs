@@ -8,12 +8,12 @@ using Unity.MLAgents.Sensors;
 public class MLPala : Agent
 {
 
-    public float velocidad = 1;
-    public GameObject pelota; 
+    [SerializeField] public float velocidad = 1;
+    [SerializeField] public GameObject pelota; 
     private Rigidbody2D rb;
     private Rigidbody2D rbPelota;
 
-    public GameObject muroArriba, muroAbajo;
+    [SerializeField] public GameObject muroArriba, muroAbajo;
 
    
 
@@ -32,20 +32,19 @@ public class MLPala : Agent
     {
         float lUp = vectorAction[0];
 
-        lUp -= 1; 
-       
+        lUp -= 1;
+
 
 
         if ((transform.position.y < muroAbajo.transform.position.y +
-            transform.localScale.y / 2 && lUp < 0))
+            transform.localScale.y / 2 + 0.7f && lUp < 0))
         {
-            
             AddReward(-0.05f);
             return;
         }
-        if ((lUp > 0) && (transform.position.y > 8.65f))
+        if ((lUp > 0) && (transform.position.y > muroArriba.transform.position.y -
+            transform.localScale.y / 2 - 0.7f))
         {
-         
             AddReward(-0.05f);
             return;
         }
@@ -96,9 +95,9 @@ public class MLPala : Agent
     {
         if (collision.tag == "Pelota")
         {
-            collision.GetComponent<Pelota>().cambiarDirX();
+            collision.GetComponent<Pelota>().CambiarDirX();
             collision.GetComponent<Pelota>().AumentarVelocidad();
-            AddReward(2f);
+            AddReward(2.0f);
         }
 
         if (collision.tag == "Muro")
@@ -106,6 +105,11 @@ public class MLPala : Agent
 
             AddReward(-0.05f);
         }
+    }
+
+    public void AñadirPenalizacion()
+    {
+        AddReward(-1.0f);
     }
 
 }
