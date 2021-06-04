@@ -5,19 +5,21 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 
+//Toda script que vaya a implementar comportamientos con ml agents necesita heredar de Agent
 public class MLPala : Agent
 {
 
-    [SerializeField] public float velocidad = 1;
-    [SerializeField] public GameObject pelota; 
-    private Rigidbody2D rb;
-    private Rigidbody2D rbPelota;
+    [SerializeField] public float velocidad = 1; //Velocidad de la pala
+    [SerializeField] public GameObject pelota;   //Pelota del entorno
+    private Rigidbody2D rb;                      //Rigidbody de la pala
+    private Rigidbody2D rbPelota;                //Rigidbody de la pelota
 
-    [SerializeField] public GameObject muroArriba, muroAbajo;
+    [SerializeField] public GameObject muroArriba, muroAbajo;   //Muro de arriba y de abajo
 
-   
 
- 
+    /// <summary>
+    /// Funcion de inicializacion del agente, es similar a la funcion start de Unity
+    /// </summary>
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,40 +29,48 @@ public class MLPala : Agent
     }
 
 
-   
+    /// <summary>
+    /// Esta funcion recoge las aciones que va a hacer el agente.Es importante saber que el algortimo de machine learning solo entiende
+    /// numeros,por eso tiene como parametro un vector de floats,es decir, que no entiende que es moverse hacia la derecha,
+    /// no sabe que es un Transform, etc.
+    /// </summary>
+    /// <param name="vectorAction">Vector donde se almacenan el numero de acciones que va a hacer el agente</param>
     public override void OnActionReceived(float[] vectorAction)
     {
-        float lUp = vectorAction[0];
+        float arriba = vectorAction[0]; // -1 -> abajo, 0 -> parado, 1 -> arriba
+        arriba -= 1;
 
-        lUp -= 1;
-
-
-
+        //Si la pala toca el muro de abajo la penalizamos para que no insista
         if ((transform.position.y < muroAbajo.transform.position.y +
-            transform.localScale.y / 2 + 0.7f && lUp < 0))
+            transform.localScale.y / 2 + 0.7f && arriba < 0))
         {
             AddReward(-0.05f);
             return;
         }
-        if ((lUp > 0) && (transform.position.y > muroArriba.transform.position.y -
+
+        //Si la pala toca el muro de arriba la penalizamos para que no insista
+        if ((arriba > 0) && (transform.position.y > muroArriba.transform.position.y -
             transform.localScale.y / 2 - 0.7f))
         {
             AddReward(-0.05f);
             return;
         }
 
-        if (lUp != 0)  
-        {
-         
+        //Si la pala se decide moverse le añadimos una pequeña penalizacion
+        if (arriba != 0)  
+        {        
             rb.MovePosition(transform.position +
-            transform.up * lUp * velocidad * Time.deltaTime);
+            transform.up * arriba * velocidad * Time.deltaTime);
             AddReward(-0.0005f);
-
         }
-
     }
 
-
+    /// <summary>
+    /// En este metodo almacenas que atributos necesita la ia para desempeñar el comportamiento que queramos.Esto puede variar
+    /// en funcion de lo que queramos hacer. En este caso solo necesitamos la posicion del jugador en Y, la velocidad en X e Y
+    /// de la pelota y la posicion en X e Y de la pelota.
+    /// </summary>
+    /// <param name="sensor">Estructura en la que se alamacena lo que la ia necesita</param>
     public override void CollectObservations(VectorSensor sensor)
     {       
         sensor.AddObservation(pelota.transform.localPosition.x);
@@ -70,27 +80,33 @@ public class MLPala : Agent
         sensor.AddObservation(transform.localPosition.y);
     }
 
-
+    /// <summary>
+    /// En este metodo se modifican las acciones que se envian al metodo de arriba,como se ha dicho antes solo necesitamos
+    /// el movimiento en X y en Z. Esto sobretodo es para que el usuario pueda mover al jugador con las teclas para testear
+    /// el comportamiento.
+    /// </summary>
+    /// <param name="actionsOut">Vector donde se guardan las acciones</param>
     public override void Heuristic(float[] actionsOut)
     {
         
-        float lUp = 1f; //parado
+        float arriba = 1f; //parado
 
         if (Input.GetKey(KeyCode.W))
         {
-            lUp = 2f; //arriba
+            arriba = 2f; //arriba
         }
         if (Input.GetKey(KeyCode.S))
         {
-            lUp = 0f; //abajo
+            arriba = 0f; //abajo
         }
         
-
-        actionsOut[0] = lUp;
-
+        actionsOut[0] = arriba;
     }
 
-
+    /// <summary>
+    /// Si la pelota colisona con la pala le cambiamos su direccion,le aumentamos la velocidad y le damos una recompensa.
+    /// Si la pala choca con el muro le añadimos una penalizacion.
+    /// </summary>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Pelota")
@@ -107,6 +123,9 @@ public class MLPala : Agent
         }
     }
 
+    /// <summary>
+    /// Añade una pequeña penalizacion a la pala
+    /// </summary>
     public void AñadirPenalizacion()
     {
         AddReward(-1.0f);

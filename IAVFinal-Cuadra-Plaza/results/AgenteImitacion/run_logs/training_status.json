@@ -2,17 +2,23 @@
     "AgenteImitacion": {
         "checkpoints": [
             {
-                "steps": 111619,
-                "file_path": "results\\AgenteImitacion\\AgenteImitacion\\AgenteImitacion-111619.onnx",
+                "steps": 499960,
+                "file_path": "results\\AgenteImitacion\\AgenteImitacion\\AgenteImitacion-499960.onnx",
+                "reward": 1.999714342842708,
+                "creation_time": 1622770381.212512
+            },
+            {
+                "steps": 639893,
+                "file_path": "results\\AgenteImitacion\\AgenteImitacion\\AgenteImitacion-639893.onnx",
                 "reward": null,
-                "creation_time": 1622669872.4274623
+                "creation_time": 1622770520.2411556
             }
         ],
         "final_checkpoint": {
-            "steps": 111619,
+            "steps": 639893,
             "file_path": "results\\AgenteImitacion\\AgenteImitacion.onnx",
             "reward": null,
-            "creation_time": 1622669872.4274623
+            "creation_time": 1622770520.2411556
         }
     },
     "metadata": {

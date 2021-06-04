@@ -5,20 +5,25 @@ using UnityEngine;
 public class Boton : MonoBehaviour
 {
 
-    [SerializeField] Material botonSinPulsar;
-    [SerializeField] Material botonPulsado;
-    [SerializeField] SpawnObjetivo objetivo;
-    [SerializeField] Transform spwanObjetivo;
+    [SerializeField] Material botonSinPulsar;   //Material del boton sin pulsar
+    [SerializeField] Material botonPulsado;     //Material del boton pulsado
+    [SerializeField] SpawnObjetivo objetivo;    //componente que spawnea al objetivo
+    [SerializeField] Transform spwanObjetivo;   //Posicion donde spawnea el objetivo
 
-    MeshRenderer meshRenderer;
+    MeshRenderer meshRenderer;                  //Meshrenderer del boton
 
-    bool usarBoton = true;
+    bool usarBoton = true;                      //Para saber si se puede usar el boton
 
     private void Awake()
     {
+        //Cogemos el meshRenderer del boton
         meshRenderer = GetComponent<MeshRenderer>(); 
     }
 
+    /// <summary>
+    /// Al resetear el boton cambiamos su material,ponemos su escala original en Y y lo posicionamos en uns zona 
+    /// aleatoria del escenario
+    /// </summary>
     public void ResetarBoton()
     {
         meshRenderer.material = botonSinPulsar;
@@ -27,6 +32,9 @@ public class Boton : MonoBehaviour
         usarBoton = true;
     }
 
+    /// <summary>
+    /// Al usar el boton cambiamos su material,reducimos su escala en Y y sapwneamos el objetivo
+    /// </summary>
     public void UsarBoton()
     {
         if(usarBoton)
@@ -38,6 +46,9 @@ public class Boton : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Devuelve si se puede usar el boton
+    /// </summary>
     public bool PuedeUsarBoton()
     {
         return usarBoton;

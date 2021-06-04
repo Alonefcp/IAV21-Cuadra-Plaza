@@ -904,7 +904,7 @@ MonoBehaviour:
     VectorActionSize: 030000000300000002000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 225c1ae72f210804a9cd2ce4f8e28b99, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: AgenteImitacion

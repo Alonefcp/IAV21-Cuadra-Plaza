@@ -14,7 +14,7 @@ public class MoverHaciaObjetivo : Agent
     [SerializeField] Material rojo;                 //Material con color rojo
 
     /// <summary>
-    /// Esta funcion se ejecuta al principio del la ejecucion del comportamiento.Tiene el mismo funcionamiento que la
+    /// Esta funcion se ejecuta al principio del la ejecucion del comportamiento.Tiene un funcionamiento similar a la
     /// funcion start de unity.
     /// </summary>
     public override void OnEpisodeBegin()
@@ -41,7 +41,7 @@ public class MoverHaciaObjetivo : Agent
     /// numeros,por eso tiene como parametro un vector de floats,es decir, que no entiende que es moverse hacia la derecha,
     /// no sabe que es un Transform, etc.
     /// </summary>
-    /// <param name="vectorAction">Vector donde se almaenan el numero de acciones que va a hacer el agente</param>
+    /// <param name="vectorAction">Vector donde se almacenan el numero de acciones que va a hacer el agente</param>
     public override void OnActionReceived(float[] vectorAction)
     {
         //Aqui recogemos dos acciones del parametro, ya que solo nos interesa el movimiento en X y en Z del jugador
@@ -55,7 +55,7 @@ public class MoverHaciaObjetivo : Agent
     
     /// <summary>
     /// En este metodo se modifican las acciones que se envian al metodo de arriba,como se ha dicho antes solo necesitamos
-    /// el movimiento en X y en Z. Esto sobretodo es para que el usuario pueda mover al jugadro con las teclas para testear
+    /// el movimiento en X y en Z. Esto sobretodo es para que el usuario pueda mover al jugador con las teclas para testear
     /// el comportamiento.
     /// </summary>
     /// <param name="actionsOut">Vector donde se guardan las acciones</param>

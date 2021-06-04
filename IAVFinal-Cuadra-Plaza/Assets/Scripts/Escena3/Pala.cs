@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Pala : MonoBehaviour
 {
-    [SerializeField]public float velocidad = 6; //Velocidad de la pala
-    [SerializeField]public GameObject muroArriba, muroAbajo;
+    [SerializeField]public float velocidad = 6;                 //Velocidad de la pala
+    [SerializeField]public GameObject muroArriba, muroAbajo;    //Muro de arriba y de abajo
 
 
 
