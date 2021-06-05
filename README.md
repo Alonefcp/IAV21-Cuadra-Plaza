@@ -187,4 +187,46 @@ Para finalizar hay que poner el Behavior Type en DEFAULT, hay que desmarcar el c
 
 Después del entrenamiento solo queda añadir el archivo .onnx que es como el "cerebro" de nuestro agente ya tendremos el comportamiento terminado.
 
-Por último vamos a utilizar tensorboard para ver las gráficas
+Por último vamos a utilizar tensorboard para ver las gráficas.
+
+![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/graficasImitación.PNG) 
+
+En estas gráficas se pueden observar unas cuantas subidas y bajadas, pero por el final de ellas si que se llega a apreciar que el agente ha aprendido a hacer mejor su tarea, consiguiendo cada vez una recompensa mayor y tardando menos en realizarla.
+
+### _Tercer comportamiento mediante aprendizaje por imitación_
+
+En este comportamiento vamos ha hacer algo un poco distinto a los anteriores. Vamos a realizar una IA en una de las pala del Pong mediante apredizaje por imitación. Y la otra estará controlada por un jugador. Para ello he creado y programado un pequeño entorno de entrenamiento (en el repositorio podéis ver las scripts y todo lo relacionado con la realización de este escenario).
+
+
+![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/entornoEntrenamientoPONG.PNG) 
+
+Lo primera que hay que hacer es añadir a nuestro agente todos los componentes necesarios (Behavior Parameters, Decision Requester y Demostration Recorder) y hay que crear una script que voy a llamar MLPala.cs a la que le voy a poner un Max Step de 4000. En esta script vamos a usar prácticamente los mismos métodos que en los anteriores comportamientos.
+
+Antes de empezar a poner código vamos a pensar cuantas observaciones necesita el agente y que acciones va a realizar. Lo que el agente necesita saber de su entorno es:
+- La posición de él mismo en el eje Y (1 observación)
+- La posición de la pelota en el eje X e Y (2 observaciones)
+- La velocidad de la pelota en el eje X e Y que obtenemos de su rigidbody (2 observaciones)
+
+En total son 5 observaciones.
+
+En cuanto a las acciones vamos a utilizar un espacio discreto y va a tener una acción de tamaño 3, porque la pala solo va a ir hacia arriba, hacia abajo o va a estar parada.
+
+![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/behaviorParmPONG.PNG) 
+
+Ahora si vamos a ver algunos de los métodos de la script creada antes (no vamos a ver todos porque algunos son bastante fáciles de hacer).
+
+Esta función la descubrí cuando estaba realizando este comportamiento y es muy similar a la función start o awake de unity. Me parecía curiosa ponerla, ya que no se había usado anteriormente.
+
+![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/pong1.PNG) 
+
+Como se ha dicho antes el agente solo tiene una acción que pueder ser estar parado, ir hacia arriba e ir hacia abajo. Asignamos la acción del buffer de acciones y limitamos la posición de la pala en el eje Y para que no se pase de la posición muro superior e inferior. Y si el algún momento está parada y se empieza a mover también le añadimos una penalización muy pequeña.
+
+![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/pong2.PNG) 
+
+Respecto a las acciones que recibe del usuario se la asignamos al buffer de acciones.
+
+![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/pong3.PNG) 
+
+Por último en la función OnTriggerEnter2D he hecho que si la pelota choca con la pala le doy una recompensa y si la pala choca con un muro le añado una penalización.
+También tengo un método que añade una penalización que se llama cuando la pelota pasa por detrás de la pala, es decir, que esta no ha conseguido darle a la pelota.
+
