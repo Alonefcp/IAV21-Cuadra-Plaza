@@ -179,7 +179,7 @@ Como se puede ver esto no es muy diferente al anterior comportamiento. Para veri
 
 Una vez hecho esto vamos a hacer que el agente aprenda de nuestras acciones. Para ello hay que poner el Behavior Type en HEURISTIC y hay que marcar el checkbox Record de la script Demostration Recorder. Despúes de esto solo hay darle al botón play y realizar la tarea, es decir, ir al botón, pulsarlo e ir hacia el objetivo. Esto hay que hacerlo durante un rato y tras salir de la ejecución se habrá creado un archivo con extensión .demo en la carpeta Demos donde se recoje toda la información que se ha obtenido mientras has jugado. Cuanto más tiempo dejes que la IA recoja nformación de lo que hagas mejor será luego cuando la entrenemos.
 
-A continuación en la carpeta config hay que crear un archivo que voy a llamar AgenteImitacion.yaml (podéis mirarlo en el repositorio) y en él hay que poner dos apartados para poder usar aprendizaje por imitación. Uno de ellos es gail (Generative Adversarial Imitation Learning) es el algoritmo de imitación qu se utiliza y hay ponerle dos atributos,aunque hay más. Uno es strength (va entre 0 y 1), que quiere decir cuanto va a impactar la demo al agente, es decir, si vale 1 va a intentar hacerlo muy similar a la demo hecha antes y si tiene un valor bajo va a intentar mejorar el comportamiento dado en la demo. Para empezar le pondré un valor de 0.5. El otro atributo que hay que poner es la ruta del archivo .demo realizado antes. Y hay que añadir otro apartado llamdo behavioral_cloning que es otro algoritmo de imitacion basado en hacer exactamente lo mismo que en la por eso nunca va a mejorar el comportamiento dado en la demo y también tiene los mismos atributos.
+A continuación en la carpeta config hay que crear un archivo que voy a llamar AgenteImitacion.yaml (podéis mirarlo en el repositorio) y en él hay que poner dos apartados para poder usar aprendizaje por imitación. Uno de ellos es **gail** (Generative Adversarial Imitation Learning) es el algoritmo de imitación qu se utiliza y hay ponerle dos atributos,aunque hay más. Uno es strength (va entre 0 y 1), que quiere decir cuanto va a impactar la demo al agente, es decir, si vale 1 va a intentar hacerlo muy similar a la demo hecha antes y si tiene un valor bajo va a intentar mejorar el comportamiento dado en la demo. Para empezar le pondré un valor de 0.5. El otro atributo que hay que poner es la ruta del archivo .demo realizado antes. Y hay que añadir otro apartado llamdo **behavioral_cloning** que es otro algoritmo de imitacion basado en hacer exactamente lo mismo que en la por eso nunca va a mejorar el comportamiento dado en la demo y también tiene los mismos atributos.
 
 ![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/imitacionYaml.PNG) 
 
@@ -219,7 +219,7 @@ Esta función la descubrí cuando estaba realizando este comportamiento y es muy
 
 ![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/pong1.PNG) 
 
-Como se ha dicho antes el agente solo tiene una acción que pueder ser estar parado, ir hacia arriba e ir hacia abajo. Asignamos la acción del buffer de acciones y limitamos la posición de la pala en el eje Y para que no se pase de la posición muro superior e inferior. Y si el algún momento está parada y se empieza a mover también le añadimos una penalización muy pequeña.
+Como se ha dicho antes el agente solo tiene una acción que pueder ser estar parado, ir hacia arriba e ir hacia abajo. Asignamos la acción del buffer de acciones y limitamos la posición de la pala en el eje Y, aplicándole una penaización, para que no se pase de la posición del muro superior e inferior. Y si en algún momento está parada y se empieza a mover también le añadimos una penalización muy pequeña.
 
 ![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/pong2.PNG) 
 
@@ -229,4 +229,19 @@ Respecto a las acciones que recibe del usuario se la asignamos al buffer de acci
 
 Por último en la función OnTriggerEnter2D he hecho que si la pelota choca con la pala le doy una recompensa y si la pala choca con un muro le añado una penalización.
 También tengo un método que añade una penalización que se llama cuando la pelota pasa por detrás de la pala, es decir, que esta no ha conseguido darle a la pelota.
+
+Una vez hecha la script hay que seguir un proceso similar al anterior comportamiento por imitación. 
+- Primero con el el check box marcado del Demostration Recorder y el Behavior Type en HEURISTIC nos ponemos a controlar la pala y a darle a la pelota. Así se nos habrá creado un archivo .demo. 
+- En segundo lugar, hay que crear un archivo de configuración que he llamado Pong.yaml (podéis verlo en el repositorio) y hay que agregarle los dos apartados mencionados antes, gail y behavioral_cloning. 
+- En tercer lugar, para que el entrenamiento vaya más rápido podemos crear varios entornos y hay que entrenarlos con el archivo de configuración creado antes. En este [vídeo](https://drive.google.com/file/d/1NNFo29S0fjDt52kX5C9KFnsubrVGHVVw/view?usp=sharing) puedes ver como entrenan. En mi caso dejé a los agentes entrenando unos 40 minutos.
+
+Ahora vamos a ver las gráficas con tensorboard.
+
+![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/Captura.PNG) 
+
+Aquí podemos ver la recompensa media obtenida ha ido en aumento a medida que avanzaba el entrenamiento, pero al principio el agente lo ha hecho muy mal consigiendo una recompensa negativa. La gráfica de Episode Lenght no interesa en este caso dado que no es importante el tiempo que tarde en conseguir la recompensa.
+
+Finalmente he añadido otra pala verde que controla el jugador para jugar contra la pala roja controlada por in IA.
+
+![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/entornoFinalPONG.PNG) 
 
