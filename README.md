@@ -110,7 +110,7 @@ Por último vamos a hacer que el agente entrene tomando como base el "cerebro" q
 
 ![Captura11](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/ComportamientoBaseMejorado.PNG)
 
-El parámetro **--ititialize-from=nombreCarpeta** quiere decir que tomamos como base del entrenamiento el "cerebro" que hemos hecho con el primer entrenamiento.Ahí ponemos el nombre de la carpeta que tiene todos los archivos del "cerebro" que debe estar en a carpeta results y el nuevo "cerebro" que obtenga lo voy a guardar en una carpeta llamada ComportamientoBaseMejorado.Despues ponemos el Behavior Type a DEFAULT y quitamos el archivo que es el "cerebro" en el apartado Model.También activamos todos los entornos de entrenamiento y presionamos el play. Como puedes ver en este [vídeo](https://drive.google.com/file/d/13goH2G_tYLZLkzbMdsdIKYUg24Aomyd1/view?usp=sharing) los agentes poco a poco sabran llegar al objetivo esté donde esté.
+El parámetro **--ititialize-from=nombreCarpeta** quiere decir que tomamos como base del entrenamiento el "cerebro" que hemos hecho con el primer entrenamiento.Ahí ponemos el nombre de la carpeta que tiene todos los archivos del "cerebro" que debe estar en a carpeta results y el nuevo "cerebro" que obtenga lo voy a guardar en una carpeta llamada ComportamientoBaseMejorado.Despues ponemos el Behavior Type a DEFAULT y quitamos el archivo que es el "cerebro" en el apartado Model.También activamos todos los entornos de entrenamiento y presionamos el play. Como puedes ver en este [vídeo](https://drive.google.com/file/d/13goH2G_tYLZLkzbMdsdIKYUg24Aomyd1/view?usp=sharing) los agentes poco a poco sabran llegar al objetivo esté donde esté. Todos los entrenamientos realizados han durado aproximadamente entre 2 y 3 minutos.
 
 Tras el entrenamiento podemos desactivar todos los entrono menos uno,ponemos el Behavior Type a INFERENCE y añadimos el nuevo "cerebro" mejorado en el apartdo Model y así tendremos un maravilloso agente que es capaz de llegar un objetivo que le da igual donde esté. En este [vídeo](https://drive.google.com/file/d/1SvuQISbCOXpOJR2agVPRTHaGR6NK6xUj/view?usp=sharing) puedes ver el resultado final del primer comportamiento realizado, mediante aprendizaje por refuerzo.
 
@@ -126,6 +126,7 @@ Esta herramienta permite ver bastantes parámetros pero en este caso vamos a ver
 - **Episode Lenght** se refiere al tiempo que tarda el agente en conseguir su objetivo. Esto es normal que vaya bajando con el paso del tiempo, ya que el agente hará más rápido y mejor su tarea.
 
 ### _Segundo comportamiento mediante aprendizaje por imitación_
+
 Este comportamiento va a ser un poco más complejo que el anterior por eso eso vamos a usar aprendizaje por imitación, ya que las acciones que tiene que hacer el agente. La tarea onsiste en que un agente es el cubo azul con ojos, tiene que llegar a un botón, que aparece en una zona aleatoria en la parte derecha del entorno, y pulsarlo. Esta acción hace aparecer un objetivo (una esfera amarilla) en la parte izquierda del entorno en una posición fija, al que tiene que ir el agente.
 El entorno es exactamente igual solo que esta vez hay un botón, los muros no son triggers y el rigidbody del agente es cinemático, ya que lo vamos a mover mediante este.
 
@@ -174,8 +175,16 @@ Finalmente si el agente choca con el objetivo también le añadimos una recompen
 
 ![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/imitacion5.PNG)
 
-Como se puede ver esto no es muy diferente al anterior comportamiento. Para verificar que todo funciona correctamente podéis probar el escenario poniendo el Behavior Type en HEURISTIC. Si os acercáis al botón y pulsáis la tecla E debe aparecer el objetivo y si chocáis con él acaba el objetivo.
+Como se puede ver esto no es muy diferente al anterior comportamiento. Para verificar que todo funciona correctamente podéis probar el escenario poniendo el Behavior Type en HEURISTIC. Si os acercáis al botón y pulsáis la tecla E debe aparecer el objetivo y si chocáis con él acaba el comportamiento.
 
-Una vez hecho esto vamos a hacer que el agente imite nuestras acciones. Para ello hay que poner el Behavior Type en HEURISTIC y hay que marcar el checkbox Record de la script Demostration Recorder. Despúes de esto solo hay darle al botón play y realizar la tarea, es decir, ir al botón, pulsarlo e ir hacia el objetivo. Esto hay que hacerlo durante un rato y tras salir de la ejecución se habrá creado un archivo con extensión .demo en la carpeta Demos donde se recoje toda la información que se ha obtenido mientras has jugado.Cuanto mas tiempo dejes que la IA recoja nformación de lo que hagas mejor sera luego cuandola entrenemos.
+Una vez hecho esto vamos a hacer que el agente aprenda de nuestras acciones. Para ello hay que poner el Behavior Type en HEURISTIC y hay que marcar el checkbox Record de la script Demostration Recorder. Despúes de esto solo hay darle al botón play y realizar la tarea, es decir, ir al botón, pulsarlo e ir hacia el objetivo. Esto hay que hacerlo durante un rato y tras salir de la ejecución se habrá creado un archivo con extensión .demo en la carpeta Demos donde se recoje toda la información que se ha obtenido mientras has jugado. Cuanto más tiempo dejes que la IA recoja nformación de lo que hagas mejor será luego cuando la entrenemos.
 
+A continuación en la carpeta config hay que crear un archivo que voy a llamar AgenteImitacion.yaml (podéis mirarlo en el repositorio) y en él hay que poner dos apartados para poder usar aprendizaje por imitación. Uno de ellos es gail (Generative Adversarial Imitation Learning) es el algoritmo de imitación qu se utiliza y hay ponerle dos atributos,aunque hay más. Uno es strength (va entre 0 y 1), que quiere decir cuanto va a impactar la demo al agente, es decir, si vale 1 va a intentar hacerlo muy similar a la demo hecha antes y si tiene un valor bajo va a intentar mejorar el comportamiento dado en la demo. Para empezar le pondré un valor de 0.5. El otro atributo que hay que poner es la ruta del archivo .demo realizado antes. Y hay que añadir otro apartado llamdo behavioral_cloning que es otro algoritmo de imitacion basado en hacer exactamente lo mismo que en la por eso nunca va a mejorar el comportamiento dado en la demo y también tiene los mismos atributos.
 
+![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/imitacionYaml.PNG) 
+
+Para finalizar hay que poner el Behavior Type en DEFAULT, hay que desmarcar el checkbox Record de la script Demostration Recorder y voy a poner 20 entornos de entrenamiento. Y hay que ejecutar el comando,como en el anterior comportamiento, que permite entrenar con el archivo de configuración .yaml que se ha hecho antes y ya solo que darle al play para que los agentes empiecen a antrenar como puedes ver en este [vídeo](https://drive.google.com/file/d/1hglTrqskki6MaiIYRn1_QJARl4rD_KiL/view?usp=sharing). El entrenamiento ha durado unos 3 minutos.
+
+Después del entrenamiento solo queda añadir el archivo .onnx que es como el "cerebro" de nuestro agente ya tendremos el comportamiento terminado.
+
+Por último vamos a utilizar tensorboard para ver las gráficas
