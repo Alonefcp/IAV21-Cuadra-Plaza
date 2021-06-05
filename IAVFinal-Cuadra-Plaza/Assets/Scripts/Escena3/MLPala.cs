@@ -9,12 +9,12 @@ using Unity.MLAgents.Sensors;
 public class MLPala : Agent
 {
 
-    [SerializeField] public float velocidad = 1; //Velocidad de la pala
-    [SerializeField] public GameObject pelota;   //Pelota del entorno
+    [SerializeField] float velocidad = 1; //Velocidad de la pala
+    [SerializeField] GameObject pelota;   //Pelota del entorno
     private Rigidbody2D rb;                      //Rigidbody de la pala
     private Rigidbody2D rbPelota;                //Rigidbody de la pelota
 
-    [SerializeField] public GameObject muroArriba, muroAbajo;   //Muro de arriba y de abajo
+    [SerializeField] GameObject muroArriba, muroAbajo;   //Muro de arriba y de abajo
 
 
     /// <summary>

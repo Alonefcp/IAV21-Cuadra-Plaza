@@ -7,7 +7,7 @@ public class Muro : MonoBehaviour
     private float tiempoSuma = 0.5f; //Incremento de tiempo
     private float tiempoAux; //Variable auxiliar para guardar el tiempo
 
-    [SerializeField] public bool cambiarX=true, cambiarY = true; //Variables para saber que eje de la pelota cambiar
+    [SerializeField] bool cambiarX=true, cambiarY = true; //Variables para saber que eje de la pelota cambiar
 
     /// <summary>
     /// Si la pelota choca con algun muro y el tiempo actual de unity es mayor que el que he almacenado, 

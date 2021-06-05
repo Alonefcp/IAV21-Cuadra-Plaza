@@ -1,34 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 
-    [SerializeField] private Respawn[] objetosParaSpawnear;
+    [SerializeField] Text textoJugador; //Texto con los puntos del jugador
+    [SerializeField] Text textoIA;      //Texto con los puntos de la IA
 
-    public Pala _paddle;
+    int puntosJugador = 0;  //Puntos del jugador
+    int puntosIA = 0;       //Puntos de la IA
 
-
-
-    public static GameManager gm; 
-
-    void Start()
+    /// <summary>
+    /// Añade puntos a un jugador u a otro
+    /// </summary>
+    /// <param name="jugador">Para saber a que jugador añadir puntos</param>
+    public void AñadirPuntos(bool jugador)
     {
-        if (gm != this) gm = this; 
-      
-    }
-
-    public void RespawnearTodos()
-    {
-        for (int i = 0; i < objetosParaSpawnear.Length; i++)
+        if(jugador) //añadimos puntos al jugador
         {
-            if (objetosParaSpawnear[i] != null)
-            {
-                objetosParaSpawnear[i].Respaw();
-            }
-
+            puntosJugador++;
+            textoJugador.text = puntosJugador.ToString();
         }
-
+        else //añadimos puntos a la IA
+        {
+            puntosIA++;
+            textoIA.text = puntosIA.ToString();
+        }
     }
+
+
 }
