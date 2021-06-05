@@ -15,26 +15,38 @@ ________________________________________________________________________________
 
 ____________________________________________________________________________________________________________________________
 ## _Desarrollo del proyecto_
-El proyecto consiste en realizar tres comportamientos más o menos simples usando los ML-Agents empleando las técnicas de aprendizaje por refuerzo y aprendizaje por imitación.Primiero de todo voy a explicar en que consiste cada método de aprendizaje.
+El proyecto consiste en realizar tres comportamientos más o menos simples usando los ML-Agents empleando las técnicas de aprendizaje por refuerzo y aprendizaje por imitación. Primiero de todo voy a explicar en que consiste cada método de aprendizaje.
 
 El **_aprendizaje por refuerzo_** se basa en un bucle que consta de cuatro acciones como se puede ver en la imagen. 
 
 ![Captura1](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/AprendizajeRefuerzo.PNG)
 
-La primera acción es la observación en la que el agente obtiene datos de su entorno de entrenamiento, la segunda es tomar una decisión en función de los datos que tenga, después realiza la acción que tenga que hacer y finalmente si realiza la accion correcta obtiene una recompensa si obtien una penalización. Cos estas acciones, en un continuo bucle el agente, basandose en sus obsevaciones y acciones irá aprendiendo para conseguir las recompensas más altas. En resumen este método se basa en aprender mediante recompensas.
+La primera acción es la observación en la que el agente obtiene datos de su entorno de entrenamiento, la segunda es tomar una decisión en función de los datos que tenga, después realiza la acción que tenga que hacer y finalmente si realiza la accion correcta obtiene una recompensa si no obtiene una penalización. Cos estas acciones, en un continuo bucle el agente, basandose en sus obsevaciones y acciones irá aprendiendo para conseguir las recompensas más altas. En resumen este método se basa en aprender mediante recompensas.
 
-En cambio, el **_aprendizaje por imitación_** consiste en que el agente aprende de lo que un humano hace, es decir, en vez de probar acciones aleatorias (que sería como se aprende mediante refuerzo) va a tratar de imitar lo que he hecho el jugador.Este metodo es más útila cuando se tienen unos entornos más complejos y se requiere un comportamiento algo más difícil.Decir, que también se pueden aplicar recompensas y castigos al agente, para no solo imitar lo que hace el jugador si no también para mejorar esa imitación.
+En cambio, el **_aprendizaje por imitación_** consiste en que el agente aprende de lo que un humano hace, es decir, en vez de probar acciones aleatorias (que sería como se aprende mediante refuerzo) va a tratar de imitar lo que he hecho el jugador. Este metodo es más útil cuando se tienen unos entornos más complejos y se requiere un comportamiento algo más difícil. Decir, que también se pueden aplicar recompensas y castigos al agente, para no solo imitar lo que hace el jugador si no también para mejorar esa imitación.
 
 ____________________________________________________________________________________________________________________________
 ## _Guía rápida de instalacion del plugin ML-Agents en Unity_
 
-Por hacer
+Este proyecto se ha realizado en un PC con windows, en linux o en mac desconozco el proceso de instalación, pero será parecido.
+
+- Tener Unity instalado. En este proyecto se ha usado la version 2019.4.21f.
+- Tener instalado python. En este proyecto se ha usado la version 3.7.9.
+- Abrir la consola de windows e ir a la carpeta raíz del proyecto de Unity.
+- Crear un entorno virtual de python. Hacemos esto porque en caso de tener varios pryectos con diferentes versiones de ML-Agent, esto hace que cada uno sea independiente de otros, ya que cada uno tiene su propio entorno virtual. Para crear el entorno virtual ejecutamos el siguiente comando **python -m venv nombreCarpeta**, donde nombreCarpeta es el nombre de la carpeta donde se creará el entorno virtual. Tras esto deberíamos tener una carpeta con el nombre que hayamos puesto en el directorio raíz. Esta carpeta no es recomendable subirla a un repositorio porque pesa bastante.
+- Activar el entorno virtual. Para ello nos metemos en la carpeta creada y luego en la carpeta Scripts y ejecutamos el activate.bat dese la consola.
+- Actualizar el paquete de instalación de python llamado pip con este comando **python -m pip install --upgrade pip**
+- Ejecutar **pip install torch==1.7.0 -f https://download.pytorch.org/whl/torch_stable.html** para instalar pytorch, que es una biblioteca de aprendizaje automático de código abierto. En este proyecto se ha usado la version 1.7.0.
+- Instalar el paquete de los ml agents con este comando **python -m pip install mlagents==0.22.0**. En este proyecto se ha usado la version 0.22.0.
+- Abrir el proyecto de Unity y desde el package manager descargar el plugin de lo ML-Agents. En este proyecto se ha usado la version 1.6.0.
+
+Y listo, ya tendrás todo lo necesario.
 ____________________________________________________________________________________________________________________________
 ## _Desarrollo de los comportamientos_
 
-Teniendo un proyecto de Unity vacío, cada comportamiento se va a desarrollar en una escena por separado. Decir también que una parte del tiempo dedicado al proyecto se ha empleado en investigar como funciona este plugin y aunque los comportamientos que vamos a hacer no son muy complejos peden servir para tener una buena base para poder hacer un futuro comportamientos más complicados.
+Teniendo un proyecto de Unity vacío, cada comportamiento se va a desarrollar en una escena por separado. Decir también que una parte del tiempo dedicado al proyecto se ha empleado en investigar como funciona este plugin y aunque los comportamientos que vamos a hacer no son muy complejos pueden servir para tener una buena base para poder hacer un futuro comportamientos más complicados.
 
-### _Primer comportamiento mediante aprendizaje por refuerzo_
+### _Primer comportamiento mediante aprendizaje por refuerzo (Escena1)_
 
 Este comportamiento va a ser muy simple pero servirá para aprender lo básico de los ML-Agents de unity. Consiste en que un agente en este caso el cubo azul con ojos tiene que llegar a un objetivo que es la esfera amarilla en este pequeño entorno de entrenamiento rodeado por muros. Decir que la esfera y los muros son triggers y el agente tiene un rigidbody kinemático, ya que se va a mover mediante su transform.
 
@@ -90,7 +102,7 @@ Para entrenarlo hay que abrir la consola de windows en el directorio raíz del p
 - **--run-id=nombre** es el nombre que le quieras dar a la carpeta que tendrá todos los archivos relacionados con el entrenamiento. Esta carpeta asu vez se guarda en una carpeta llamada results que está en el directorio raíz del proyecto de Unity
 - **--force** no es obligatorio ponerlo pero si quieres hacer varios entrenamientos con el mismo nombre tienes que poner esta opción para que sobreescriba los archivos que había antes, si no también puedes poner un nombre diferente a cada entrenamiento que hagas.
 
-Una vez ejecutado este parametro hay que cambiar el Behavior Type a DEFAULT y pulsar el botón del play de Unity y el agente se debera mover por si solo e intentará llegar al objetivo,como se puede ver en este [vídeo](https://drive.google.com/file/d/1nNEVJmDRaxbXNb82eXXHFGjbxX3CHiUZ/view?usp=sharing).Para salir del entrenamiento basta con pararla ejecución del Unity. Pero igual se tarda bastante en enseñar al agente si solo tenemosun entorno de entranmiento, para que vaya más rápido voy a duplicar el entorno y voy a hacer 20 y voy a volver a ajecutar el comando de antes y como se puede ver en este [vídeo](https://drive.google.com/file/d/1e1uKbA2j8SJMKIkldEv5OjAeXa3H2s4r/view?usp=sharing) ahora hay 20 agentes entrenando a la vez. También decir que cuanto más tiempo dejes entrenando al agente más rápido y mejor hará su tarea. Como puedes ver al principo no muchos consiguen llegar al objetivo pero con el paso del tiempo el agente va aprendiendo y al final del video todos los agentes son capaces de llegar al objetivo. Después solo dejo activado un entorno de entrenamiento.
+Una vez ejecutado este parametro hay que cambiar el Behavior Type a DEFAULT y pulsar el botón del play de Unity y el agente se debera mover por si solo e intentará llegar al objetivo,como se puede ver en este [vídeo](https://drive.google.com/file/d/1nNEVJmDRaxbXNb82eXXHFGjbxX3CHiUZ/view?usp=sharing).Para salir del entrenamiento basta con parar la ejecución del Unity. Pero igual se tarda bastante en enseñar al agente si solo tenemosun entorno de entranmiento, para que vaya más rápido voy a duplicar el entorno y voy a hacer 20 y voy a volver a ajecutar el comando de antes y como se puede ver en este [vídeo](https://drive.google.com/file/d/1e1uKbA2j8SJMKIkldEv5OjAeXa3H2s4r/view?usp=sharing) ahora hay 20 agentes entrenando a la vez. También decir que cuanto más tiempo dejes entrenando al agente más rápido y mejor hará su tarea. Como puedes ver al principo no muchos consiguen llegar al objetivo pero con el paso del tiempo el agente va aprendiendo y al final del video todos los agentes son capaces de llegar al objetivo. Después solo dejo activado un entorno de entrenamiento.
 
 Una vez entrenado vamos a hacer que agente use todo lo que ha aprendido durante su entrenamiento. Vamos a la carpeta results y buscamos una carpeta con el nombre que hayamos puesto en el comando ejecutado entes y nos metemos en esa carpeta y encontraremos un archivo con extensión .onnx que se llama como hayamos puesto en el parámetro de Behavior Name en la script BehaviorParameters. Este archivo es como el "cerebro" del agente que tiene toda la información del entrenamiento. Copiamos y pegamos ese archivo en la carpeta de assets y lo arrastramos al apartado Model del BehaviorParameters y el Behavior Type lo ponemos en INFERENCE. Ahora si ejecutamos el agente por si solo va a estar yendo hacia el objetivo, ya que para eso ha sido entrenado. Pero ¿qué pasa si cambiamos el objetivo de sitio? ¿lo hará igual de bien que antes? la respuesta es que no, como se puede ver en este [vídeo](https://drive.google.com/file/d/1kWBYx1Y4shWihoxdOEXBnkljbQh8lqeV/view?usp=sharing).¿Por qué ocurre esto? porque el agente ha sido entrenado para llegar al objetivo que está en una posición fija y si le cambiamos el entorno ya no sabe que hacer.Por ello vamos a mejorar un poco nuestra IA.
 
@@ -125,7 +137,7 @@ Esta herramienta permite ver bastantes parámetros pero en este caso vamos a ver
 - **Comulative Reward** muestra la media de recompensas que obtiene durante el entrenamiento. Si el agente entrena bien este valor debería subir con el paso del tiempo, ya que cada vez el agente va a fallar menos.
 - **Episode Lenght** se refiere al tiempo que tarda el agente en conseguir su objetivo. Esto es normal que vaya bajando con el paso del tiempo, ya que el agente hará más rápido y mejor su tarea.
 
-### _Segundo comportamiento mediante aprendizaje por imitación_
+### _Segundo comportamiento mediante aprendizaje por imitación (Escena2)_
 
 Este comportamiento va a ser un poco más complejo que el anterior por eso eso vamos a usar aprendizaje por imitación, ya que las acciones que tiene que hacer el agente. La tarea onsiste en que un agente es el cubo azul con ojos, tiene que llegar a un botón, que aparece en una zona aleatoria en la parte derecha del entorno, y pulsarlo. Esta acción hace aparecer un objetivo (una esfera amarilla) en la parte izquierda del entorno en una posición fija, al que tiene que ir el agente.
 El entorno es exactamente igual solo que esta vez hay un botón, los muros no son triggers y el rigidbody del agente es cinemático, ya que lo vamos a mover mediante este.
@@ -185,7 +197,7 @@ A continuación en la carpeta config hay que crear un archivo que voy a llamar A
 
 Para finalizar hay que poner el Behavior Type en DEFAULT, hay que desmarcar el checkbox Record de la script Demostration Recorder y voy a poner 20 entornos de entrenamiento. Y hay que ejecutar el comando,como en el anterior comportamiento, que permite entrenar con el archivo de configuración .yaml que se ha hecho antes y ya solo que darle al play para que los agentes empiecen a antrenar como puedes ver en este [vídeo](https://drive.google.com/file/d/1hglTrqskki6MaiIYRn1_QJARl4rD_KiL/view?usp=sharing). El entrenamiento ha durado unos 3 minutos.
 
-Después del entrenamiento solo queda añadir el archivo .onnx que es como el "cerebro" de nuestro agente ya tendremos el comportamiento terminado.
+Después del entrenamiento solo queda añadir el archivo .onnx que es como el "cerebro" de nuestro agente ya tendremos el comportamiento terminado. Puedes verlo en este [vídeo](https://drive.google.com/file/d/12kNS6t5uUVIIlNWWxv7dARhJHM5GM7Df/view?usp=sharing). Seguramente toqueteando los atributos del archivo de configuración y entrenando a los agentes más tiempo conseguirás una IA lo haga más rápido.
 
 Por último vamos a utilizar tensorboard para ver las gráficas.
 
@@ -193,7 +205,7 @@ Por último vamos a utilizar tensorboard para ver las gráficas.
 
 En estas gráficas se pueden observar unas cuantas subidas y bajadas, pero por el final de ellas si que se llega a apreciar que el agente ha aprendido a hacer mejor su tarea, consiguiendo cada vez una recompensa mayor y tardando menos en realizarla.
 
-### _Tercer comportamiento mediante aprendizaje por imitación_
+### _Tercer comportamiento mediante aprendizaje por imitación (Escena3)_
 
 En este comportamiento vamos ha hacer algo un poco distinto a los anteriores. Vamos a realizar una IA en una de las pala del Pong mediante apredizaje por imitación. Y la otra estará controlada por un jugador. Para ello he creado y programado un pequeño entorno de entrenamiento (en el repositorio podéis ver las scripts y todo lo relacionado con la realización de este escenario).
 
@@ -245,3 +257,8 @@ Finalmente he añadido otra pala verde que controla el jugador para jugar contra
 
 ![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/entornoFinalPONG.PNG) 
 
+Puedes ver como fnciona la IA con jugador en este [vídeo](https://drive.google.com/file/d/1pt7h-MzgKIVu717HUCusGtvat9ORAlBj/view?usp=sharing). Cabe descatar que la IA no es perfecta, a veces puede fallar pero casi siempre le da a la pelota. Seguramente toqueteando los atributos del archivo de configuración y entrenando a los agentes más tiempo conseguirás una IA que casi nunca falle. 
+
+## _Final de proyecto_
+
+Esto ha sido todo el proyecto. Espero que te haya gustado, te haya parecido interesante y que hayas aprendido lo básico sobre este increíble plugin de inteligencia artificial.
