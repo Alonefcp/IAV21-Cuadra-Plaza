@@ -42,6 +42,6 @@ public class Pelota : MonoBehaviour
     public void AumentarVelocidad()
     {
         if(velocidad < maxVelocidad)
-          velocidad += 0.25f;
+          velocidad += 0.2f;
     }
 }
