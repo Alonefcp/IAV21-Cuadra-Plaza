@@ -1,9 +1,9 @@
 # Aprendizaje automático con ml agents de Unity
 Proyecto final de la asignatura de inteligencia artificial para videojuegos. Curso 2020/2021. Alumno: Felipe Cuadra Plaza.
 
-Link de la build -> por hacer
+* [Build del proyecto](https://drive.google.com/file/d/115EDYhFWxzkttU1-WOjQ-hNCWEe6BWqe/view?usp=sharing). Tambien está en el repositorio en la carpeta Ejecutable.
 
-Link del video ->por hacer
+* [Vídeo del proyecto](https://drive.google.com/file/d/1rG9Mu1UtDIQilTecftvDPkR3bXPS0i6L/view?usp=sharing)
 ____________________________________________________________________________________________________________________________
 ## _Introducción_
 
@@ -15,54 +15,55 @@ ________________________________________________________________________________
 
 ____________________________________________________________________________________________________________________________
 ## _Desarrollo del proyecto_
-El proyecto consiste en realizar tres comportamientos más o menos simples usando los ML-Agents empleando las técnicas de aprendizaje por refuerzo y aprendizaje por imitación. Primiero de todo voy a explicar en que consiste cada método de aprendizaje.
+
+El proyecto consiste en realizar tres comportamientos más o menos simples usando los ML-Agents empleando las técnicas de aprendizaje por refuerzo y aprendizaje por imitación. Primero de todo voy a explicar en que consiste cada método de aprendizaje.
 
 El **_aprendizaje por refuerzo_** se basa en un bucle que consta de cuatro acciones como se puede ver en la imagen. 
 
 ![Captura1](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/AprendizajeRefuerzo.PNG)
 
-La primera acción es la observación en la que el agente obtiene datos de su entorno de entrenamiento, la segunda es tomar una decisión en función de los datos que tenga, después realiza la acción que tenga que hacer y finalmente si realiza la accion correcta obtiene una recompensa si no obtiene una penalización. Cos estas acciones, en un continuo bucle el agente, basandose en sus obsevaciones y acciones irá aprendiendo para conseguir las recompensas más altas. En resumen este método se basa en aprender mediante recompensas.
+La primera acción es la observación en la que el agente obtiene datos de su entorno de entrenamiento, la segunda es tomar una decisión en función de los datos que tenga, después realiza la acción que tenga que hacer y finalmente si realiza la accion correcta obtiene una recompensa, si no obtiene una penalización. Cos estas etapas, en un continuo bucle el agente, basandose en sus obsevaciones y acciones irá aprendiendo para conseguir las recompensas más altas. En resumen este método se basa en aprender mediante recompensas.
 
-En cambio, el **_aprendizaje por imitación_** consiste en que el agente aprende de lo que un humano hace, es decir, en vez de probar acciones aleatorias (que sería como se aprende mediante refuerzo) va a tratar de imitar lo que he hecho el jugador. Este metodo es más útil cuando se tienen unos entornos más complejos y se requiere un comportamiento algo más difícil. Decir, que también se pueden aplicar recompensas y castigos al agente, para no solo imitar lo que hace el jugador si no también para mejorar esa imitación.
+En cambio, el **_aprendizaje por imitación_** consiste en que el agente aprende de lo que un humano hace, es decir, en vez de probar acciones aleatorias (que sería como se aprende mediante aprendizaje refuerzo) va a tratar de imitar lo que he hecho el jugador. Este metodo es más útil cuando se tienen unos entornos más complejos y se requiere un comportamiento algo más difícil. Decir, que también se pueden aplicar recompensas y castigos al agente, para no solo imitar lo que hace el jugador si no también para mejorar lo que ha hecho.
 
 ____________________________________________________________________________________________________________________________
 ## _Guía rápida de instalacion del plugin ML-Agents en Unity_
 
-Este proyecto se ha realizado en un PC con windows, en linux o en mac desconozco el proceso de instalación, pero será parecido.
+Este proyecto se ha realizado en un PC con Windows 10, en linux o en mac desconozco el proceso de instalación, pero será parecido.
 
-- Tener Unity instalado. En este proyecto se ha usado la version 2019.4.21f.
+- Tener Unity instalado. En este proyecto se ha usado la versión 2019.4.21f.
 - Tener instalado python. En este proyecto se ha usado la version 3.7.9.
 - Abrir la consola de windows e ir a la carpeta raíz del proyecto de Unity.
-- Crear un entorno virtual de python. Hacemos esto porque en caso de tener varios pryectos con diferentes versiones de ML-Agent, esto hace que cada uno sea independiente de otros, ya que cada uno tiene su propio entorno virtual. Para crear el entorno virtual ejecutamos el siguiente comando **python -m venv nombreCarpeta**, donde nombreCarpeta es el nombre de la carpeta donde se creará el entorno virtual. Tras esto deberíamos tener una carpeta con el nombre que hayamos puesto en el directorio raíz. Esta carpeta no es recomendable subirla a un repositorio porque pesa bastante.
-- Activar el entorno virtual. Para ello nos metemos en la carpeta creada y luego en la carpeta Scripts y ejecutamos el activate.bat dese la consola.
+- Crear un entorno virtual de python. Hacemos esto porque en caso de tener varios proyectos con diferentes versiones de ML-Agent, esto hace que cada uno sea independiente del otro, ya que cada uno tiene su propio entorno virtual. Para crear el entorno virtual ejecutamos el siguiente comando **python -m venv nombreCarpeta**, donde nombreCarpeta es el nombre de la carpeta donde se creará el entorno virtual. Tras esto deberíamos tener una carpeta con el nombre que hayamos puesto en el directorio raíz. Esta carpeta no es recomendable subirla a un repositorio porque pesa bastante.
+- Activar el entorno virtual. Para ello nos metemos en la carpeta creada y luego en la carpeta Scripts y ejecutamos el **activate.bat** dese la consola.
 - Actualizar el paquete de instalación de python llamado pip con este comando **python -m pip install --upgrade pip**
 - Ejecutar **pip install torch==1.7.0 -f https://download.pytorch.org/whl/torch_stable.html** para instalar pytorch, que es una biblioteca de aprendizaje automático de código abierto. En este proyecto se ha usado la version 1.7.0.
 - Instalar el paquete de los ml agents con este comando **python -m pip install mlagents==0.22.0**. En este proyecto se ha usado la version 0.22.0.
-- Abrir el proyecto de Unity y desde el package manager descargar el plugin de lo ML-Agents. En este proyecto se ha usado la version 1.6.0.
+- Abrir el proyecto de Unity y desde el package manager, descargar el plugin de los ML-Agents. En este proyecto se ha usado la version 1.6.0.
 
 Y listo, ya tendrás todo lo necesario.
 ____________________________________________________________________________________________________________________________
 ## _Desarrollo de los comportamientos_
 
-Teniendo un proyecto de Unity vacío, cada comportamiento se va a desarrollar en una escena por separado. Decir también que una parte del tiempo dedicado al proyecto se ha empleado en investigar como funciona este plugin y aunque los comportamientos que vamos a hacer no son muy complejos pueden servir para tener una buena base para poder hacer un futuro comportamientos más complicados.
+Teniendo un proyecto de Unity vacío, cada comportamiento se va a desarrollar en una escena por separado. Decir también que una parte del tiempo dedicado al proyecto se ha empleado en investigar como funciona este plugin y aunque los comportamientos que vamos a hacer no son muy complejos, pueden servir para tener una buena base para poder hacer en un futuro comportamientos más complicados.
 
 ### _Primer comportamiento mediante aprendizaje por refuerzo (Escena1)_
 
-Este comportamiento va a ser muy simple pero servirá para aprender lo básico de los ML-Agents de unity. Consiste en que un agente en este caso el cubo azul con ojos tiene que llegar a un objetivo que es la esfera amarilla en este pequeño entorno de entrenamiento rodeado por muros. Decir que la esfera y los muros son triggers y el agente tiene un rigidbody kinemático, ya que se va a mover mediante su transform.
+Este comportamiento va a ser muy simple pero servirá para aprender lo básico de los ML-Agents de unity. Consiste en que un agente en este caso el cubo azul con ojos tiene que llegar a un objetivo, que es la esfera amarilla, en este pequeño entorno de entrenamiento rodeado por muros. Decir que la esfera y los muros son triggers y el agente tiene un rigidbody kinemático, ya que se va a mover mediante su transform.
 
 ![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/Escena1.PNG)
 
-Una vez hecho este escenario voy a añadir al agente una scripts que voy a llamar MoverHaciaObjetivo.cs y hay que hacer que la clase herede de Agent y no de MonoBehaviour, porque toda script que vaya a implementar comportamientos mediante ML-Agents debe heredar de Agent. Despues vamos a agregar dos scripts propias del plugin de ML-Agents que son BehaviorParameters y DecisionRequester.También hay que saber que el algoritmo de machine learning de Unity solo entiende de números, es decir, que no sabe que es ir a la derecha, que es un vector, que es un transform,etc. Vamos a ver algunos de los atributos mas importantes de la primera scripts:
+Una vez hecho este escenario voy a añadir al agente una scripts que voy a llamar MoverHaciaObjetivo.cs y hay que hacer que la clase herede de Agent y no de MonoBehaviour, porque toda script que vaya a implementar comportamientos mediante ML-Agents debe heredar de Agent. Después vamos a agregar dos scripts propias del plugin de ML-Agents que son BehaviorParameters y DecisionRequester. También hay que saber que el algoritmo de machine learning de Unity solo entiende de números, es decir, que no sabe que es ir a la derecha, que es un vector, que es un transform, etc. Esto es algo que hay que asimilar bien, sobretodo a la hora de agregar observaciones y acciones a los agentes. Vamos a ver algunos de los atributos más importantes de la primera script:
 
 ![Captura3](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/Refuerzo1.PNG)
 
-- **Behavior Name**: es el nombre que va a tener el comportamiento
-- **Vector observations**: concretamente el Space Size es el número de observaciones que tiene que tener el agente
-- **Vector Action**: en el Space Type tiene dos tipos DISCRETE que representa números enteros y CONTINUOUS que representa números decimales. Si tipo es CONTINUOUS el Space Sizee representa el numero de acciones del agente y si el tipo es DISCRETE, Branches Size tambien es el numero de acciones del agente pero además hay que poner cuantos números va a tener cada accion o en este caso rama en los apartados de Branch 0 Size, Branch 1 size,etc.Por eejemplo si en un tamaño de la rama ponermos 2 significa que tiene dos números que son en 0 y el 1.
-- **Model**: aqui se agrega un archivo que es como el "cerebro" del agente para que desempeñe su comportamiento.
+- **Behavior Name**: es el nombre que va a tener el comportamiento.
+- **Vector observations**: concretamente el Space Size es el número de observaciones que tiene que tener el agente.
+- **Vector Action**: en el Space Type tiene dos tipos DISCRETE que representa números enteros y CONTINUOUS que representa números decimales. Si tipo es CONTINUOUS el Space Size representa el numero de acciones del agente y si el tipo es DISCRETE, Branches Size también es el número de acciones del agente, pero además hay que poner cuantos números va a tener cada accion o en este caso rama en los apartados de Branch 0 Size, Branch 1 size,etc.Por ejemplo si en un tamaño de la rama ponemos 2 significa que tiene dos números que son el 0 y el 1.
+- **Model**: aquí se agrega un archivo que es como el "cerebro" del agente para que desempeñe su comportamiento.
 - **Behavior Type**: hay  tres tipos, DEFAULT que se usa cuando el agente está entrenando, HEURISTIC se usa cuando queremos controlar nosotros al egente para probar el entorno y INFERENCE que se usa cuando el agnte ya tiene un cerebro.
 
-La otra script solicita una decision cada cierto tiempo para llevar a cabo una acción. En esta script los parámetros se pueden dejar como están.
+La script llamada DecisionRequester, solicita una decisián cada cierto tiempo para llevar a cabo una acción. En esta script los parámetros se pueden dejar como están.
 
 Al asignar la script creada que hereda de Agent en el inspector aparecerá una variable llamada **Max Step** que se refiere a la siguiente actualización en el entrenamiento que por defecto se produce 15 veces por segundo como las físicas de unity, por ejmplo voy a asignarle un valor de 1000. Esto lo pongo para que el entrenamiento tenga un fin por si en algún momento el agente nuca es capaz de llegar al objetivo.
 Tras saber esto vamos a empezar a escribir código en la script que se ha creado antes. Lo primero que hago es crear cuatro variables una que almacena la posición del objetivo, otra que guarda el MeshRenderer del suelo para cambiarle el material, ya que voy a hacer que cuando el agnete realize su tarea con éxito el suelo se ponga verde y si fracasa lo pongo rojo. Las otras dos variables son materiales con los colores.
