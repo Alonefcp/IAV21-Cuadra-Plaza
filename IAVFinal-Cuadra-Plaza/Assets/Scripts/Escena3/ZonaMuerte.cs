@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ZonaMuerte : MonoBehaviour
 {
-    [SerializeField] GameManager gameManager;
+    [SerializeField] GameManager gameManager; //Componente del GameManager
     [SerializeField] MLPala mlPala; //Componenete de la pala controlada por la IA
     [SerializeField] bool penaliza; //Para saber si penalizar o no a la pala
     [SerializeField] bool darPuntosAlJugador; //Para saber a que pala dar puntos

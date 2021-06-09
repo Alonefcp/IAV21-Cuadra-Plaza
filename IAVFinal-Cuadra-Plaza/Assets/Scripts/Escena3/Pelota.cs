@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pelota : MonoBehaviour
 {
     [SerializeField] float velocidad = 6f;        //Velocidad de la pelota
-    [SerializeField] float maxVelocidad = 35f;    //Velocidad maxima de la pelota
+    [SerializeField,Range(35,40)] float maxVelocidad = 35f;    //Velocidad maxima de la pelota
     Vector2 direccion;                  //Direccio de la pelota
 
 

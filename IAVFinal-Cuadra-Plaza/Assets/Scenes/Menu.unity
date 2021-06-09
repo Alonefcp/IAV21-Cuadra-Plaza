@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5424528, g: 0.8117592, b: 1, a: 1}
+  m_Color: {r: 0.5424528, g: 0.8117592, b: 1, a: 0.74509805}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5424528, g: 0.8117592, b: 1, a: 1}
+  m_Color: {r: 0.5424528, g: 0.8117592, b: 1, a: 0.74509805}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -637,7 +637,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 11, y: -442}
+  m_AnchoredPosition: {x: 56, y: -395}
   m_SizeDelta: {x: 543.30646, y: 57.99518}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &866385831
@@ -1048,7 +1048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5424528, g: 0.8117592, b: 1, a: 1}
+  m_Color: {r: 0.5424528, g: 0.8117592, b: 1, a: 0.74509805}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1398,7 +1398,7 @@ Camera:
   m_GameObject: {fileID: 1944864202}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.624911, g: 0.8773585, b: 0.6816565, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -1552,7 +1552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5424528, g: 0.8117592, b: 1, a: 1}
+  m_Color: {r: 0.5424528, g: 0.8117592, b: 1, a: 0.74509805}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
