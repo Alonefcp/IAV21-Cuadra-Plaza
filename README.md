@@ -16,7 +16,7 @@ ________________________________________________________________________________
 ____________________________________________________________________________________________________________________________
 ## _Desarrollo del proyecto_
 
-El proyecto consiste en realizar tres comportamientos más o menos simples usando los ML-Agents empleando las técnicas de aprendizaje por refuerzo y aprendizaje por imitación. Primero de todo voy a explicar en que consiste cada método de aprendizaje.
+El proyecto consiste en realizar tres comportamientos más o menos simples usando los ML-Agents y empleando las técnicas de aprendizaje por refuerzo y aprendizaje por imitación. Primero de todo voy a explicar en que consiste cada método de aprendizaje.
 
 El **_aprendizaje por refuerzo_** se basa en un bucle que consta de cuatro acciones como se puede ver en la imagen. 
 
