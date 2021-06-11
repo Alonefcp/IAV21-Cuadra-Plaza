@@ -1,7 +1,7 @@
 # Aprendizaje automático con ml agents de Unity
 Proyecto final de la asignatura de inteligencia artificial para videojuegos. Curso 2020/2021. Alumno: Felipe Cuadra Plaza.
 
-* [Build del proyecto](https://drive.google.com/file/d/115EDYhFWxzkttU1-WOjQ-hNCWEe6BWqe/view?usp=sharing). Tambien está en el repositorio en la carpeta Ejecutable.
+* [Build del proyecto](https://drive.google.com/file/d/1B01IOrml7YZoQNTPSLsfFrg8Rn2u-toj/view?usp=sharing). Tambien está en el repositorio en la carpeta Ejecutable.
 
 * [Vídeo del proyecto](https://drive.google.com/file/d/1rG9Mu1UtDIQilTecftvDPkR3bXPS0i6L/view?usp=sharing)
 ____________________________________________________________________________________________________________________________
@@ -65,7 +65,7 @@ Una vez hecho este escenario voy a añadir al agente una scripts que voy a llama
 
 La script llamada DecisionRequester, solicita una decisión cada cierto tiempo para llevar a cabo una acción. En esta script los parámetros se pueden dejar como están.
 
-Al asignar la script creada que hereda de Agent en el inspector aparecerá una variable llamada **Max Step** que se refiere a la siguiente actualización en el entrenamiento que, por defecto se produce 15 veces por segundo como las físicas de unity, por ejemplo voy a asignarle un valor de 1000. Esto lo pongo para que el entrenamiento tenga un fin por si en algún momento el agente nuca es capaz de llegar al objetivo.
+Al asignar la script creada que hereda de Agent en el inspector aparecerá una variable llamada **Max Step** que se refiere a la siguiente actualización en el entrenamiento que, por defecto se produce 15 veces por segundo como las físicas de unity, por ejemplo voy a asignarle un valor de 1000. Esto lo pongo para que el entrenamiento tenga un fin por si en algún momento el agente nunca es capaz de llegar al objetivo.
 Tras saber esto vamos a empezar a escribir código en la script que se ha creado antes. Lo primero que hago es crear cuatro variables una que almacena la posición del objetivo, otra que guarda el MeshRenderer del suelo para cambiarle el material, ya que voy a hacer que cuando el agnete realize su tarea con éxito el suelo se ponga verde y si fracasa lo pongo rojo. Las otras dos variables son materiales con los colores.
 
 Vamos a empezar por asignar al agente que observaciones tiene que tener en cuenta, para ello vamos a escribir un método de la clase Agente que se llama  CollectObservations(VectorSensor sensor). En este métodos añadiremos todo lo que el agente tiene que tener en cuenta con el método sensor.AddObservation(...). Aquí hay que pensar que es lo que necesita el agente para desempeñar su tarea, en este caso solo necesita saber su propia posición y la posición del objetivo. 
@@ -207,9 +207,15 @@ En estas gráficas se pueden observar unas cuantas subidas y bajadas, pero por e
 
 ### _Tercer comportamiento mediante aprendizaje por imitación (Escena3)_
 
-En este comportamiento vamos ha hacer algo un poco distinto a los anteriores. Vamos a realizar una IA en una de las pala del Pong mediante apredizaje por imitación. Y la otra estará controlada por un jugador. Para ello he creado y programado un pequeño entorno de entrenamiento (en el repositorio podéis ver las scripts y todo lo relacionado con la realización de este escenario).
+En este comportamiento vamos ha hacer algo un poco distinto a los anteriores. Vamos a realizar una IA en una de las pala del Pong mediante apredizaje por imitación. Y la otra estará controlada por un jugador. Para ello he creado y programado un pequeño entorno de entrenamiento (en el repositorio podéis ver las scripts y todo lo relacionado con la realización de este escenario y la programación).
 
 ![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/entornoEntrenamientoPONG.PNG) 
+
+Antes de enpezar hay que poner dos gameobjects hijo a la pala y situar uno en un extremo de esta y el otro en el otro extremo de la pala. A estos dos gameobjects vamos a añadirle un componente de ML-Agents llamado **Ray Perception Sensor 2D**. Este componenete lanza raycasts para detectar cualquier elemento, que en nuestro caso son los muros de arriba y de abajo. Esto no esencial para desarrollar el comportamiento pero ayudará a que la pala no se que atascada en los muros.
+
+![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/RayPerception.PNG) 
+
+Poner un nombre diferente a cada componente para que no salga un error. Y en el resto de atributos lo que estamos haciendo es configurar diferentes parámetros para los raycast como el número de rayos que salen en una dirección, el máximo ángulo para cada rayo, la longitud de cada rayo, etc.
 
 Lo primero que hay que hacer es añadir a nuestro agente todos los componentes necesarios (Behavior Parameters, Decision Requester y Demostration Recorder) y hay que crear una script que voy a llamar MLPala.cs a la que le voy a poner un Max Step de 4000. En esta script vamos a usar prácticamente los mismos métodos que en los anteriores comportamientos.
 
@@ -252,7 +258,7 @@ Ahora vamos a ver las gráficas con tensorboard.
 
 Aquí podemos ver la recompensa media obtenida ha ido en aumento a medida que avanzaba el entrenamiento, pero al principio el agente lo ha hecho muy mal consigiendo una recompensa negativa. La gráfica de Episode Lenght no interesa en este caso dado que no es importante el tiempo que tarde en conseguir la recompensa (en este esta caso en tensorboard en esta gráfica salía una linea paralela, indicando que el tiempo era el mismo).
 
-Finalmente he añadido otra pala verde que controla el jugador para jugar contra la pala roja controlada por la IA.
+Finalmente he añadido otra pala verde que controla el jugador con las teclas W y S, para jugar contra la pala roja controlada por la IA.
 
 ![Captura2](IAVFinal-Cuadra-Plaza/Assets/MaterialDocumentacion/entornoFinalPONG.PNG) 
 
@@ -260,4 +266,4 @@ Puedes ver como fnciona la IA con jugador en este [vídeo](https://drive.google.
 
 ## _Final de proyecto y conclusiones_
 
-Esto ha sido todo el proyecto. Espero que te haya gustado, te haya parecido interesante y que hayas aprendido lo básico sobre este increíble plugin de inteligencia artificial. En mi opinión me he gustado trabajar con esta herramienta y tiene muchas posibilidades para realizar casi cualquier comportamiento que se te ocurra. Lo que no me ha gustado es el hecho de tener que esperar mientras los agentes entrenan, que en este proyecto no eran tareas muy difíciles y no he hestado mucho tiempo, pero si hay que hacer comportamientos más complejos pueden estar horas entrenando y eso no me agrada. Pero bueno, entiendo que hay que ser consciente de ello si te quieres meter de lleno en el aprendizaje automático.
+Esto ha sido todo el proyecto. Espero que te haya gustado, te haya parecido interesante y que hayas aprendido lo básico sobre este increíble plugin de inteligencia artificial. En mi opinión me he gustado trabajar con esta herramienta y tiene muchas posibilidades para realizar casi cualquier comportamiento que se te ocurra. Lo que no me ha gustado es el hecho de tener que esperar mientras los agentes entrenan, que en este proyecto no eran tareas muy difíciles y no he estado mucho tiempo, pero si hay que hacer comportamientos más complejos pueden estar horas entrenando y eso no me agrada. Pero bueno, entiendo que hay que ser consciente de ello si te quieres meter de lleno en el aprendizaje automático.
